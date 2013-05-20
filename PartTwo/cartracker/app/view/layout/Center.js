@@ -1,6 +1,6 @@
 Ext.define('CarTracker.view.layout.Center', {
     extend: 'Ext.panel.Panel',
-    xtype: 'layout.center',
+    alias:'widget.layout.center',
     region: 'center',
     title: 'Center Content',
     initComponent: function(){
