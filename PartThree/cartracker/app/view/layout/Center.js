@@ -1,3 +1,6 @@
+/**
+ * Main content region for application
+ */
 Ext.define('CarTracker.view.layout.Center', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.layout.center',

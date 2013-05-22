@@ -1,3 +1,6 @@
+/**
+ * Main top-level navigation for application
+ */
 Ext.define('CarTracker.view.layout.Menu', {
     extend: 'Ext.menu.Menu',
     alias: 'widget.layout.menu',

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*
+This file is part of Ext JS 4.2
+
+Copyright (c) 2011-2013 Sencha Inc
+
+Contact:  http://www.sencha.com/contact
+
+GNU General Public License Usage
+This file may be used under the terms of the GNU General Public License version 3.0 as
+published by the Free Software Foundation and appearing in the file LICENSE included in the
+packaging of this file.
+
+Please review the following information to ensure the GNU General Public License version 3.0
+requirements will be met: http://www.gnu.org/copyleft/gpl.html.
+
+If you are unsure which license is appropriate for your use, please contact the sales department
+at http://www.sencha.com/contact.
+
+Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+*/
+<span id='Ext-grid-ColumnComponentLayout'>/**
+</span> * Component layout for grid column headers which have a title element at the top followed by content.
+ * @private
+ */
+Ext.define('Ext.grid.ColumnComponentLayout', {
+    extend: 'Ext.layout.component.Auto',
+    alias: 'layout.columncomponent',
+
+<span id='Ext-grid-ColumnComponentLayout-property-type'>    type: 'columncomponent',
+</span>
+<span id='Ext-grid-ColumnComponentLayout-cfg-setWidthInDom'>    setWidthInDom: true,
+</span>
+<span id='Ext-grid-ColumnComponentLayout-method-getContentHeight'>    getContentHeight : function(ownerContext) {
+</span>        // If we are a group header return container layout's contentHeight, else default to AutoComponent's answer
+        return this.owner.isGroupHeader ? ownerContext.getProp('contentHeight') : this.callParent(arguments);
+    },
+
+<span id='Ext-grid-ColumnComponentLayout-method-calculateOwnerHeightFromContentHeight'>    calculateOwnerHeightFromContentHeight: function (ownerContext, contentHeight) {
+</span>        var result = this.callParent(arguments);
+        if (this.owner.isGroupHeader) {
+            result += this.owner.titleEl.dom.offsetHeight;
+        }
+        return result;
+    },
+    
+<span id='Ext-grid-ColumnComponentLayout-method-getContentWidth'>    getContentWidth : function(ownerContext) {
+</span>        // If we are a group header return container layout's contentHeight, else default to AutoComponent's answer
+        return this.owner.isGroupHeader ? ownerContext.getProp('contentWidth') : this.callParent(arguments);
+    },
+
+<span id='Ext-grid-ColumnComponentLayout-method-calculateOwnerWidthFromContentWidth'>    calculateOwnerWidthFromContentWidth: function (ownerContext, contentWidth) {
+</span>        return contentWidth + ownerContext.getPaddingInfo().width;
+    }
+});</pre>
+</body>
+</html>

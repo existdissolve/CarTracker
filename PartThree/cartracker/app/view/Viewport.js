@@ -1,3 +1,7 @@
+/**
+ * Main application Viewport
+ * Uses a {@link Ext.layout.container.Border} layout for ccontent organization
+ */
 Ext.define('CarTracker.view.Viewport', {
     extend: 'Ext.container.Viewport',
     requires:[

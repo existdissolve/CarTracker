@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-layout-North'>/**
+</span> * &quot;Header&quot; for the application (logo, title, etc.)
+ */
+Ext.define('CarTracker.view.layout.North', {
+    extend: 'Ext.panel.Panel',
+    alias: 'widget.layout.north',
+<span id='CarTracker-view-layout-North-cfg-region'>    region: 'north',
+</span><span id='CarTracker-view-layout-North-cfg-bodyPadding'>    bodyPadding: 5,
+</span><span id='CarTracker-view-layout-North-cfg-html'>    html: '&lt;img src=&quot;resources/images/car.png&quot; /&gt;&lt;h1&gt;Car Tracker&lt;/h1&gt;',
+</span><span id='CarTracker-view-layout-North-cfg-cls'>    cls: 'header',                  
+</span><span id='CarTracker-view-layout-North-method-initComponent'>    initComponent: function(){
+</span>        var me = this;
+        Ext.applyIf(me,{
+            
+        });
+        me.callParent( arguments );
+    } 
+});</pre>
+</body>
+</html>

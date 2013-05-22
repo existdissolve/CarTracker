@@ -1,3 +1,6 @@
+/**
+ * "Header" for the application (logo, title, etc.)
+ */
 Ext.define('CarTracker.view.layout.North', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.layout.north',

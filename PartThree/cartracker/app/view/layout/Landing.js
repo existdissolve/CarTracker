@@ -1,3 +1,6 @@
+/**
+ * Generic landing page for application
+ */
 Ext.define('CarTracker.view.layout.Landing', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.layout.landing',

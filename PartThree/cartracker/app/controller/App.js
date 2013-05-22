@@ -1,3 +1,6 @@
+/**
+ * Main controller for all top-level application functionality
+ */
 Ext.define('CarTracker.controller.App', {
     extend: 'CarTracker.controller.Base',
     views: [
@@ -35,7 +38,7 @@ Ext.define('CarTracker.controller.App', {
      * Add history token to Ext.util.History
      * @param {Ext.menu.Item} item
      * @param {Object} e
-     * @params {Object} opts
+     * @param {Object} opts
      */
     addHistory: function( item, e, opts ) {
         var me = this,
@@ -84,6 +87,7 @@ Ext.define('CarTracker.controller.App', {
     /**
      * Updates center region of app with passed configuration
      * @param {Object} config
+     * @private
      */
     updateCenterRegion: function( config ) {
         var me = this,

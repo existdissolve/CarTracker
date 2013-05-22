@@ -1,3 +1,6 @@
+/**
+ * West (sidebar) region for use within application
+ */
 Ext.define('CarTracker.view.layout.West', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.layout.west',
