@@ -1,6 +1,6 @@
 Ext.define('CarTracker.view.layout.West', {
     extend: 'Ext.panel.Panel',
-    xtype: 'layout.west',
+    alias: 'widget.layout.west',
     region: 'west',
     title: 'Menu',
     split: true,
