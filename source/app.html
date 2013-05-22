@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker'>/**
+</span> * @class CarTracker
+ */
+/*
+    This file is generated and updated by Sencha Cmd. You can edit this file as
+    needed for your application, but these edits will have to be merged by
+    Sencha Cmd when it performs code generation tasks such as generating new
+    models, controllers or views and when running &quot;sencha app upgrade&quot;.
+
+    Ideally changes to this file would be limited and most work would be done
+    in other places (such as Controllers). If Sencha Cmd cannot merge your
+    changes and its generated code, it will produce a &quot;merge conflict&quot; that you
+    will need to resolve manually.
+*/
+
+// DO NOT DELETE - this directive is required for Sencha Cmd packages to work.
+//@require @packageOverrides
+
+Ext.application({
+    name: 'CarTracker',
+    views: [
+        'Viewport'
+    ],
+    controllers: [
+        'App'
+    ],
+    requires: [
+        'Ext.util.History'
+    ],
+    autoCreateViewport: true,
+<span id='CarTracker-method-launch'>    /**
+</span>     * launch is called immediately upon availability of our app
+     */
+    launch: function( args ) {
+        // &quot;this&quot; = Ext.app.Application
+        var me = this;
+        // init Ext.util.History on app launch; if there is a hash in the url,
+        // our controller will load the appropriate content
+        Ext.util.History.init(function(){
+            var hash = document.location.hash;
+            me.getAppController().fireEvent( 'tokenchange', hash.replace( '#', '' ) );
+        })
+        // add change handler for Ext.util.History; when a change in the token
+        // occurs, this will fire our controller's event to load the appropriate content
+        Ext.util.History.on( 'change', function( token ){
+            me.getAppController().fireEvent( 'tokenchange', token );
+        });
+    }
+});
+</pre>
+</body>
+</html>
