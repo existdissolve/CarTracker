@@ -14,3 +14,7 @@ Create App Frame with Viewport and Border Layout
 Part Three
 ----------
 Create First Controller and Wire Up Menu
+
+Part Four
+---------
+Create First Model, Store, Proxy, and Editable Grid
