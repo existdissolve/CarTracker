@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-layout-Menu'>/**
+</span> * Main top-level navigation for application
+ */
+Ext.define('CarTracker.view.layout.Menu', {
+    extend: 'Ext.menu.Menu',
+    alias: 'widget.layout.menu',
+<span id='CarTracker-view-layout-Menu-cfg-floating'>    floating: false,
+</span><span id='CarTracker-view-layout-Menu-method-initComponent'>    initComponent: function(){
+</span>        var me = this;
+        Ext.applyIf(me,{
+            items: [
+                {
+                    text: 'Options',
+                    itemId: 'options',
+                    iconCls: 'icon_gear',
+                    menu: [
+                        {
+                            text: 'Car Categories',
+                            itemId: 'option/category',
+                            iconCls: 'icon_category'
+                        },
+                        {
+                            text: 'Car Colors',
+                            itemId: 'option/color',
+                            iconCls: 'icon_color'
+                        },
+                        {
+                            text: 'Car Features',
+                            itemId: 'option/feature',
+                            iconCls: 'icon_feature'
+                        },
+                        {
+                            text: 'Staff Positions',
+                            itemId: 'option/position',
+                            iconCls: 'icon_position'
+                        },
+                        {
+                            text: 'Statuses',
+                            itemId: 'option/status',
+                            iconCls: 'icon_status'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'menuseparator'
+                },
+                {
+                    text: 'Sales Staff',
+                    itemId: 'staff',
+                    iconCls: 'icon_user'
+                },
+                {
+                    xtype: 'menuseparator'
+                },
+                {
+                    text: 'Inventory',
+                    itemId: 'inventory',
+                    iconCls: 'icon_tag'
+                }
+            ]
+        });
+        me.callParent( arguments );
+    } 
+});</pre>
+</body>
+</html>

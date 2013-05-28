@@ -33,7 +33,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
 */
 <span id='Ext-window-Window'>/**
 </span> * A specialized panel intended for use as an application window. Windows are floated, {@link #resizable}, and
@@ -265,8 +265,6 @@ Ext.define('Ext.window.Window', {
      */
     floating: true,
 
-<span id='Ext-window-Window-property-ariaRole'>    ariaRole: 'alertdialog',
-</span>
 <span id='Ext-window-Window-property-itemCls'>    itemCls: Ext.baseCSSPrefix + 'window-item',
 </span>    
 <span id='Ext-window-Window-property-initialAlphaNum'>    initialAlphaNum: /^[a-z0-9]/,
@@ -587,15 +585,6 @@ Ext.define('Ext.window.Window', {
             me.callParent(arguments);
         } else {
             focusDescendant.focus();
-        }
-    },
-
-<span id='Ext-window-Window-method-beforeLayout'>    beforeLayout: function () {
-</span>        var shadow = this.el.shadow;
-
-        this.callParent();
-        if (shadow) {
-            shadow.hide();
         }
     },
 

@@ -33,7 +33,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
 */
 <span id='Ext-grid-column-Action'>/**
 </span> * A Grid header type which renders an icon, or a series of icons in a grid cell, and offers a scoped click
@@ -250,6 +250,8 @@ Ext.define('Ext.grid.column.Action', {
 
 <span id='Ext-grid-column-Action-cfg-sortable'>    sortable: false,
 </span>
+<span id='Ext-grid-column-Action-property-innerCls'>    innerCls: Ext.baseCSSPrefix + 'grid-cell-inner-action-col',
+</span>
 <span id='Ext-grid-column-Action-method-constructor'>    constructor: function(config) {
 </span>        var me = this,
             cfg = Ext.apply({}, config),
@@ -318,7 +320,7 @@ Ext.define('Ext.grid.column.Action', {
                 item.hasActionConfiguration = true;
             }
 
-            ret += '&lt;img alt=&quot;' + (item.altText || me.altText) + '&quot; src=&quot;' + (item.icon || Ext.BLANK_IMAGE_URL) +
+            ret += '&lt;img role=&quot;button&quot; alt=&quot;' + (item.altText || me.altText) + '&quot; src=&quot;' + (item.icon || Ext.BLANK_IMAGE_URL) +
                 '&quot; class=&quot;' + prefix + 'action-col-icon ' + prefix + 'action-col-' + String(i) + ' ' + (disabled ? prefix + 'item-disabled' : ' ') +
                 ' ' + (Ext.isFunction(item.getClass) ? item.getClass.apply(item.scope || scope, arguments) : (item.iconCls || me.iconCls || '')) + '&quot;' +
                 (tooltip ? ' data-qtip=&quot;' + tooltip + '&quot;' : '') + ' /&gt;';

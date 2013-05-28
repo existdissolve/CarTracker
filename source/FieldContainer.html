@@ -33,7 +33,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
 */
 <span id='Ext-form-FieldContainer'>/**
 </span> * FieldContainer is a derivation of {@link Ext.container.Container Container} that implements the
@@ -181,7 +181,10 @@ Ext.define('Ext.form.FieldContainer', {
     combineErrors: false,
 
 <span id='Ext-form-FieldContainer-property-maskOnDisable'>    maskOnDisable: false,
-</span>
+</span><span id='Ext-form-FieldContainer-cfg-invalidCls'>    // If we allow this to mark with the invalidCls it will cascade to all
+</span>    // child fields, let them handle themselves
+    invalidCls: '',
+
 <span id='Ext-form-FieldContainer-property-fieldSubTpl'>    fieldSubTpl: '&lt;div id=&quot;{id}-containerEl&quot; class=&quot;{containerElCls}&quot;&gt;{%this.renderContainer(out,values)%}&lt;/div&gt;',
 </span>
 <span id='Ext-form-FieldContainer-method-initComponent'>    initComponent: function() {
@@ -213,6 +216,10 @@ Ext.define('Ext.form.FieldContainer', {
             labelable.x += (me.labelWidth + me.labelPad);
         }
         me.callParent(arguments);
+        if (me.combineLabels) {
+            labelable.oldHideLabel = labelable.hideLabel;
+            labelable.hideLabel = true;
+        }
         me.updateLabel();
     },
 
@@ -224,6 +231,9 @@ Ext.define('Ext.form.FieldContainer', {
         var me = this;
         me.callParent(arguments);
         if (!isDestroying) {
+            if (me.combineLabels) {
+                labelable.hideLabel = labelable.oldHideLabel;
+            }
             me.updateLabel();
         }   
     },

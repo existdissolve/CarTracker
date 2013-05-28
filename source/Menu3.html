@@ -15,42 +15,45 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js"><span id='CarTracker-view-layout-Menu'>/**
-</span> * Main top-level navigation for application
- */
-Ext.define('CarTracker.view.layout.Menu', {
-    extend: 'Ext.menu.Menu',
-    alias: 'widget.layout.menu',
-<span id='CarTracker-view-layout-Menu-cfg-floating'>    floating: false,
-</span><span id='CarTracker-view-layout-Menu-method-initComponent'>    initComponent: function(){
-</span>        var me = this;
-        Ext.applyIf(me,{
-            items: [
-                {
-                    text: 'Options',
-                    itemId: 'options',
-                    iconCls: 'icon_gear'
-                },
-                {
-                    xtype: 'menuseparator'
-                },
-                {
-                    text: 'Sales Staff',
-                    itemId: 'staff',
-                    iconCls: 'icon_user'
-                },
-                {
-                    xtype: 'menuseparator'
-                },
-                {
-                    text: 'Inventory',
-                    itemId: 'inventory',
-                    iconCls: 'icon_tag'
-                }
-            ]
-        });
-        me.callParent( arguments );
-    } 
-});</pre>
+  <pre class="prettyprint lang-js">/*
+This file is part of Ext JS 4.2
+
+Copyright (c) 2011-2013 Sencha Inc
+
+Contact:  http://www.sencha.com/contact
+
+GNU General Public License Usage
+This file may be used under the terms of the GNU General Public License version 3.0 as
+published by the Free Software Foundation and appearing in the file LICENSE included in the
+packaging of this file.
+
+Please review the following information to ensure the GNU General Public License version 3.0
+requirements will be met: http://www.gnu.org/copyleft/gpl.html.
+
+If you are unsure which license is appropriate for your use, please contact the sales department
+at http://www.sencha.com/contact.
+
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
+*/
+Ext.define('Ext.rtl.layout.container.boxOverflow.Menu', {
+    override: 'Ext.layout.container.boxOverflow.Menu',
+
+    getSuffixConfig: function(isFromRTL) {
+        if (isFromRTL) {
+            return this.callParent();
+        } else {
+            return this.getPrefixConfig(true);
+        }
+    },
+
+    getPrefixConfig: function(isFromRTL) {
+        if (isFromRTL) {
+            return this.callParent();
+        } else {
+            return this.getSuffixConfig(true);
+        }
+    }
+});
+</pre>
 </body>
 </html>

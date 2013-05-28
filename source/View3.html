@@ -33,7 +33,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
 */
 <span id='Ext-tree-View'>/**
 </span> * Used as a view by {@link Ext.tree.Panel TreePanel}.
@@ -105,6 +105,8 @@ Ext.define('Ext.tree.View', {
         '{%',
             'this.processRowValues(values);',
             'this.nextTpl.applyOut(values, out, parent);',
+            'delete values.rowAttr[&quot;data-qtip&quot;];',
+            'delete values.rowAttr[&quot;data-qtitle&quot;];',
         '%}', {
             priority: 10,
             processRowValues: function(rowValues) {
@@ -332,7 +334,7 @@ Ext.define('Ext.tree.View', {
                 '&lt;td colspan=&quot;' + me.panel.headerCt.getColumnCount() + '&quot;&gt;',
                     '&lt;div class=&quot;' + me.nodeAnimWrapCls + '&quot;&gt;',
                         // Table has to have correct classes to get sized by the dynamic CSS rules
-                        '&lt;table class=&quot;' + Ext.baseCSSPrefix + me.id + '-table ' + Ext.baseCSSPrefix + 'grid-table&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;',
+                        '&lt;table class=&quot;' + Ext.baseCSSPrefix + me.id + '-table ' + Ext.baseCSSPrefix + 'grid-table&quot; style=&quot;border:0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;',
                         columnSizer.join(''),
                         '&lt;tbody&gt;&lt;/tbody&gt;&lt;/table&gt;',
                     '&lt;/div&gt;',
@@ -440,22 +442,6 @@ Ext.define('Ext.tree.View', {
         // because the targetEl just got higher.
         if (animWrap.isAnimating) {
             me.onExpand(parent);
-        }
-    },
-
-<span id='Ext-tree-View-method-beginBulkUpdate'>    // These methods are triggered by:
-</span>    //  the TreeStore's beforebulkremove &amp; bulkremovecomplete events.
-    // In the case of a fully loaded tree (no async IO needed), the whole expansion will be bracketed by
-    // layout suspension, and will end with one refreshSize call.
-    beginBulkUpdate: function() {
-        if (this.rendered) {
-            Ext.suspendLayouts();
-        }
-    },
-<span id='Ext-tree-View-method-endBulkUpdate'>    endBulkUpdate: function(){
-</span>        if (this.rendered) {
-            this.refreshSize();
-            Ext.resumeLayouts(true);
         }
     },
 
@@ -823,9 +809,7 @@ Ext.define('Ext.tree.View', {
         me.mon(treeStore, {
             scope: me,
             beforefill: me.onBeforeFill,
-            fillcomplete: me.onFillComplete,
-            beforebulkremove: me.beginBulkUpdate,
-            bulkremovecomplete: me.endBulkUpdate
+            fillcomplete: me.onFillComplete
         });
 
         if (!treeStore.remoteSort) {
@@ -848,9 +832,7 @@ Ext.define('Ext.tree.View', {
         me.mun(treeStore, {
             scope: me,
             beforefill: me.onBeforeFill,
-            fillcomplete: me.onFillComplete,
-            beforebulkremove: me.beginBulkUpdate,
-            bulkremovecomplete: me.endBulkUpdate
+            fillcomplete: me.onFillComplete
         });
 
         if (!treeStore.remoteSort) {

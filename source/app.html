@@ -15,55 +15,156 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js"><span id='CarTracker'>/**
-</span> * @class CarTracker
+  <pre class="prettyprint lang-js"><span id='CarTracker-controller-App'>/**
+</span> * Main controller for all top-level application functionality
  */
-/*
-    This file is generated and updated by Sencha Cmd. You can edit this file as
-    needed for your application, but these edits will have to be merged by
-    Sencha Cmd when it performs code generation tasks such as generating new
-    models, controllers or views and when running &quot;sencha app upgrade&quot;.
-
-    Ideally changes to this file would be limited and most work would be done
-    in other places (such as Controllers). If Sencha Cmd cannot merge your
-    changes and its generated code, it will produce a &quot;merge conflict&quot; that you
-    will need to resolve manually.
-*/
-
-// DO NOT DELETE - this directive is required for Sencha Cmd packages to work.
-//@require @packageOverrides
-
-Ext.application({
-    name: 'CarTracker',
-    views: [
-        'Viewport'
+Ext.define('CarTracker.controller.App', {
+    extend: 'CarTracker.controller.Base',
+<span id='CarTracker-controller-App-cfg-views'>    views: [
+</span>        'layout.Menu',
+        'layout.Center',
+        'layout.Landing'
     ],
-    controllers: [
-        'App'
+<span id='CarTracker-controller-App-cfg-refs'>    refs: [
+</span>        {
+            ref: 'Menu',
+            selector: '[xtype=layout.menu]'
+        },
+        {
+            ref: 'CenterRegion',
+            selector: '[xtype=layout.center]'
+        }
     ],
-    requires: [
-        'Ext.util.History'
-    ],
-    autoCreateViewport: true,
-<span id='CarTracker-method-launch'>    /**
-</span>     * launch is called immediately upon availability of our app
-     */
-    launch: function( args ) {
-        // &quot;this&quot; = Ext.app.Application
-        var me = this;
-        // init Ext.util.History on app launch; if there is a hash in the url,
-        // our controller will load the appropriate content
-        Ext.util.History.init(function(){
-            var hash = document.location.hash;
-            me.getAppController().fireEvent( 'tokenchange', hash.replace( '#', '' ) );
-        })
-        // add change handler for Ext.util.History; when a change in the token
-        // occurs, this will fire our controller's event to load the appropriate content
-        Ext.util.History.on( 'change', function( token ){
-            me.getAppController().fireEvent( 'tokenchange', token );
+<span id='CarTracker-controller-App-method-init'>    init: function() {
+</span>        this.listen({
+            controller: {
+                '#App': {
+                    tokenchange: this.dispatch
+                }
+            },
+            component: {
+                'menu[xtype=layout.menu] menuitem': {
+                    click: this.addHistory
+                } 
+            },
+            global: {},
+            store: {},
+            proxy: {
+                '#baserest': {
+                    exception: function( proxy, response, operation, eOpts ) {
+                        console.log( 'Danger Will Robinson! We had a proxy error!' );
+                    }
+                }
+            } 
         });
+    },
+<span id='CarTracker-controller-App-method-addHistory'>    /**
+</span>     * Add history token to Ext.util.History
+     * @param {Ext.menu.Item} item
+     * @param {Object} e
+     * @param {Object} opts
+     */
+    addHistory: function( item, e, opts ) {
+        var me = this,
+            token = item.itemId;
+        Ext.util.History.add( token );
+        me.fireEvent( 'tokenchange', token )
+    },
+<span id='CarTracker-controller-App-method-dispatch'>    /**
+</span>     * Handles token change and directs creation of content in center region
+     * @param {String} token
+     */
+    dispatch: function( token ) {
+        var me = this,
+            config;
+        // switch on token to determine which content to create
+        switch( token ) {
+            case 'staff':
+                config = {
+                    xtype: 'panel',
+                    title: 'Staff',
+                    html: 'Some staff content'
+                };
+                break;
+            case 'option/category':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Car Categories',
+                    iconCls: 'icon_category',
+                    store: Ext.create( 'CarTracker.store.option.Categories', {
+                        pageSize: 30
+                    })
+                };
+                break;
+            case 'option/color':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Car Colors',
+                    iconCls: 'icon_color',
+                    store: Ext.create( 'CarTracker.store.option.Colors', {
+                        pageSize: 30
+                    })
+                };
+                break;
+            case 'option/feature':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Car Features',
+                    iconCls: 'icon_feature',
+                    store: Ext.create( 'CarTracker.store.option.Features', {
+                        pageSize: 30
+                    })
+                };
+                break;
+            case 'option/position':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Staff Positions',
+                    iconCls: 'icon_position',
+                    store: Ext.create( 'CarTracker.store.option.Positions', {
+                        pageSize: 30
+                    })
+                };
+                break;
+            case 'option/status':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Statuses',
+                    iconCls: 'icon_status',
+                    store: Ext.create( 'CarTracker.store.option.Statuses', {
+                        pageSize: 30
+                    })
+                };
+                break;
+            case 'inventory':
+                config = {
+                    xtype: 'panel',
+                    title: 'Inventory',
+                    html: 'Some inventory content' 
+                };
+                break;
+            default: 
+                config = {
+                    xtype: 'layout.landing'
+                };
+                break;
+        }
+        me.updateCenterRegion( config );
+    },
+<span id='CarTracker-controller-App-method-updateCenterRegion'>    /**
+</span>     * Updates center region of app with passed configuration
+     * @param {Object} config
+     * @private
+     */
+    updateCenterRegion: function( config ) {
+        var me = this,
+            center = me.getCenterRegion();
+        
+        // remove all existing content
+        center.removeAll( true );
+        // add new content
+        center.add( config );
     }
-});
-</pre>
+});</pre>
 </body>
 </html>

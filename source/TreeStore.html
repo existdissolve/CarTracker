@@ -33,7 +33,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
 */
 <span id='Ext-data-TreeStore'>/**
 </span> * The TreeStore is a store implementation that is backed by by an {@link Ext.data.Tree}.
@@ -280,6 +280,7 @@ Ext.define('Ext.data.TreeStore', {
             // force rebuild
             reader.buildExtractors(true);
         }
+        return proxy;
     },
 
 <span id='Ext-data-TreeStore-method-onBeforeSort'>    // inherit docs
@@ -654,14 +655,6 @@ Ext.define('Ext.data.TreeStore', {
         --me.fillCount;
         
         return newNodes;
-    },
-    
-<span id='Ext-data-TreeStore-method-beginBulkRemove'>    beginBulkRemove: function(){
-</span>        this.fireEvent('beforebulkremove', this);
-    },
-    
-<span id='Ext-data-TreeStore-method-endBulkRemove'>    endBulkRemove: function(){
-</span>        this.fireEvent('bulkremovecomplete', this);    
     },
 
 <span id='Ext-data-TreeStore-method-sortByIndex'>    /**

@@ -33,7 +33,7 @@ requirements will be met: http://www.gnu.org/copyleft/gpl.html.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2013-03-11 22:33:40 (aed16176e68b5e8aa1433452b12805c0ad913836)
+Build date: 2013-05-16 14:36:50 (f9be68accb407158ba2b1be2c226a6ce1f649314)
 */
 <span id='Ext-form-field-Display'>/**
 </span> * A display-only text field which is not validated and not submitted. This is useful for when you want to display a
@@ -75,7 +75,7 @@ Ext.define('Ext.form.field.Display', {
     requires: ['Ext.util.Format', 'Ext.XTemplate'],
     alternateClassName: ['Ext.form.DisplayField', 'Ext.form.Display'],
 <span id='Ext-form-field-Display-cfg-fieldSubTpl'>    fieldSubTpl: [
-</span>        '&lt;div id=&quot;{id}&quot;',
+</span>        '&lt;div id=&quot;{id}&quot; role=&quot;input&quot; ',
         '&lt;tpl if=&quot;fieldStyle&quot;&gt; style=&quot;{fieldStyle}&quot;&lt;/tpl&gt;', 
         ' class=&quot;{fieldCls}&quot;&gt;{value}&lt;/div&gt;',
         {
@@ -84,12 +84,20 @@ Ext.define('Ext.form.field.Display', {
         }
     ],
 
+<span id='Ext-form-field-Display-cfg-readOnly'>    /**
+</span>     * @cfg {Boolean} readOnly
+     * @private
+     */
+    readOnly: true,
+
 <span id='Ext-form-field-Display-cfg-fieldCls'>    /**
 </span>     * @cfg {String} [fieldCls=&quot;x-form-display-field&quot;]
      * The default CSS class for the field.
      */
     fieldCls: Ext.baseCSSPrefix + 'form-display-field',
 
+<span id='Ext-form-field-Display-cfg-fieldBodyCls'>    fieldBodyCls: Ext.baseCSSPrefix + 'form-display-field-body',
+</span>
 <span id='Ext-form-field-Display-cfg-htmlEncode'>    /**
 </span>     * @cfg {Boolean} htmlEncode
      * True to escape HTML in text when rendering it.
@@ -107,6 +115,12 @@ Ext.define('Ext.form.field.Display', {
      * The scope to execute the {@link #renderer} function. Defaults to this.
      */
 
+    noWrap: false,
+    
+<span id='Ext-form-field-Display-cfg-validateOnChange'>    /**
+</span>     * @cfg {Boolean} validateOnChange
+     * @private
+     */
     validateOnChange: false,
 
 <span id='Ext-form-field-Display-method-initEvents'>    initEvents: Ext.emptyFn,
@@ -130,8 +144,7 @@ Ext.define('Ext.form.field.Display', {
     },
 
 <span id='Ext-form-field-Display-method-setRawValue'>    setRawValue: function(value) {
-</span>        var me = this,
-            display;
+</span>        var me = this;
             
         value = Ext.value(value, '');
         me.rawValue = value;
@@ -172,14 +185,6 @@ Ext.define('Ext.form.field.Display', {
      */
 <span id='Ext-form-field-Display-cfg-disabled'>    /**
 </span>     * @cfg {Boolean} disabled
-     * @private
-     */
-<span id='Ext-form-field-Display-cfg-readOnly'>    /**
-</span>     * @cfg {Boolean} readOnly
-     * @private
-     */
-<span id='Ext-form-field-Display-cfg-validateOnChange'>    /**
-</span>     * @cfg {Boolean} validateOnChange
      * @private
      */
 <span id='Ext-form-field-Display-cfg-checkChangeEvents'>    /**
