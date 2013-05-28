@@ -8,7 +8,8 @@ Ext.define('CarTracker.model.option.Category', {
        // id field
        {
            name: 'CategoryID',
-           type: 'int'
+           type: 'int',
+           useNull : true
        }
    ] 
 });

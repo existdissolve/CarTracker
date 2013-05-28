@@ -150,7 +150,7 @@ Ext.define('CarTracker.controller.Options', {
     	var me = this,
     		store = context.record.store;
     	// save
-    	store.save();
+    	store.sync();
     },
     /**
      * Displays context menu 

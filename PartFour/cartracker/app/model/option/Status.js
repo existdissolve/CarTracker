@@ -8,7 +8,8 @@ Ext.define('CarTracker.model.option.Status', {
        // id field
        {
            name: 'StatusID',
-           type: 'int'
+           type: 'int',
+           useNull : true
        }
    ] 
 });

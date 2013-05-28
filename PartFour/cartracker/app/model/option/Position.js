@@ -8,7 +8,8 @@ Ext.define('CarTracker.model.option.Position', {
        // id field
        {
            name: 'PositionID',
-           type: 'int'
+           type: 'int',
+           useNull : true
        }
    ] 
 });
