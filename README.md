@@ -18,3 +18,7 @@ Create First Controller and Wire Up Menu
 Part Four
 ---------
 Create First Model, Store, Proxy, and Editable Grid
+
+Part Five
+---------
+Creation of Main Staff Section
