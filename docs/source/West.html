@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-layout-West'>/**
+</span> * West (sidebar) region for use within application
+ */
+Ext.define('CarTracker.view.layout.West', {
+    extend: 'Ext.panel.Panel',
+    alias: 'widget.layout.west',
+    requires: [
+        'CarTracker.view.layout.Menu'
+    ],
+<span id='CarTracker-view-layout-West-cfg-region'>    region: 'west',
+</span><span id='CarTracker-view-layout-West-cfg-title'>    title: 'Menu',
+</span><span id='CarTracker-view-layout-West-property-split'>    split: true,
+</span><span id='CarTracker-view-layout-West-cfg-bodyPadding'>    bodyPadding: 5,
+</span><span id='CarTracker-view-layout-West-cfg-minWidth'>    minWidth: 175,
+</span><span id='CarTracker-view-layout-West-cfg-width'>    width: 175,
+</span><span id='CarTracker-view-layout-West-method-initComponent'>    initComponent: function(){
+</span>        var me = this;
+        Ext.applyIf(me,{
+            items: [
+                {
+                    xtype: 'layout.menu'
+                }
+            ]
+        });
+        me.callParent( arguments );
+    } 
+});</pre>
+</body>
+</html>

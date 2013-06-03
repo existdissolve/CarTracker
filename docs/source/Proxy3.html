@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-domain-Proxy'>/**
+</span> * This class implements the data proxy event domain. All classes extending from 
+ * {@link Ext.data.proxy.Server} are included in this domain. The selectors are simply
+ * store id's or the wildcard &quot;*&quot; to match any store.
+ *
+ * @protected
+ */
+
+Ext.define('CarTracker.domain.Proxy', {
+    extend: 'Ext.app.EventDomain',
+    singleton: true,
+    requires: [
+        'Ext.data.proxy.Server'
+    ],
+<span id='CarTracker-domain-Proxy-property-type'>    type: 'proxy',
+</span><span id='CarTracker-domain-Proxy-cfg-idProperty'>    idProperty: 'type',
+</span><span id='CarTracker-domain-Proxy-method-constructor'>    constructor: function() {
+</span>        var me = this;    
+        me.callParent();
+        me.monitor( Ext.data.proxy.Server );
+    }
+});</pre>
+</body>
+</html>

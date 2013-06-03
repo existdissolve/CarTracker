@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">Ext.define('CarTracker.view.staff.edit.Window', {
+    extend: 'Ext.window.Window',
+    alias: 'widget.staff.edit.window',
+    requires: [
+        'CarTracker.view.staff.edit.Form'
+    ],
+    iconCls: 'icon_user',
+    width: 600,
+    modal: true,
+    resizable: true,
+    draggable: true,
+    constrainHeader: true,
+    layout: 'fit',
+    initComponent: function() {
+        var me = this;
+        Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'staff.edit.form'
+                }
+            ],
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'button',
+                            itemId: 'cancel',
+                            text: 'Cancel',
+                            iconCls: 'icon_delete'
+                        },
+                        '-&gt;',
+                        {
+                            xtype: 'button',
+                            itemId: 'save',
+                            text: 'Save',
+                            iconCls: 'icon_save'
+                        }
+                    ]
+                }
+            ]
+        });
+        me.callParent( arguments );
+    }
+});</pre>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-model-option-Status'>/**
+</span> * Model representing a Status object
+ */
+Ext.define('CarTracker.model.option.Status', {
+   extend: 'CarTracker.model.option.Base',
+<span id='CarTracker-model-option-Status-cfg-idProperty'>   idProperty: 'StatusID',
+</span><span id='CarTracker-model-option-Status-property-fields'>   fields: [
+</span>       // id field
+       {
+           name: 'StatusID',
+           type: 'int',
+           useNull : true
+       }
+   ] 
+});</pre>
+</body>
+</html>
