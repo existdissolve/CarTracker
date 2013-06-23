@@ -1,3 +1,6 @@
+/**
+ * Main panel for displaying details for {@link CarTracker.model.Car} records
+ */
 Ext.define('CarTracker.view.car.edit.tab.Detail', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.car.edit.tab.detail',

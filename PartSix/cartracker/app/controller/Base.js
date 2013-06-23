@@ -7,7 +7,7 @@ Ext.define('CarTracker.controller.Base', {
      * Common way to retrieve full data record from the server before performing another action
      * @param {Ext.data.Record} record
      * @param {String} scope
-     * @param {Functino} callbackFn
+     * @param {Function} callbackFn
      * @param {Object} extraData
      */
     loadDetail: function( record, scope, callbackFn, extraData ) {

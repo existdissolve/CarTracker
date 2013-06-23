@@ -1,3 +1,6 @@
+/**
+ * Window for adding/editing {@link CarTracker.model.Staff} records
+ */
 Ext.define('CarTracker.view.staff.edit.Window', {
     extend: 'Ext.window.Window',
     alias: 'widget.staff.edit.window',

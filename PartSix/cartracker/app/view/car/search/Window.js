@@ -1,3 +1,6 @@
+/**
+ * Window for searching {@link CarTracker.model.Car} records
+ */
 Ext.define('CarTracker.view.car.search.Window', {
     extend: 'Ext.window.Window',
     alias: 'widget.car.search.window',

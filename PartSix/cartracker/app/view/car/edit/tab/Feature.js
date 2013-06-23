@@ -1,3 +1,6 @@
+/**
+ * Main panel for displaying {@link CarTracker.model.option.Feature} options for {@link CarTracker.model.Car} records
+ */
 Ext.define('CarTracker.view.car.edit.tab.Feature', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.car.edit.tab.feature',
