@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-model-Car'>/**
+</span> * Model representing a Staff object
+ */
+Ext.define('CarTracker.model.Car', {
+    extend: 'CarTracker.model.Base',    
+<span id='CarTracker-model-Car-cfg-idProperty'>    idProperty: 'CarID',
+</span><span id='CarTracker-model-Car-property-fields'>    fields: [
+</span>        // id field
+        {
+            name: 'CarID',
+            type: 'int',
+            useNull : true
+        },
+        // simple values
+        {
+            name: 'Description',
+            type: 'string'
+        },
+        {
+            name: 'Year',
+            type: 'int'
+        },
+        {
+            name: 'ListPrice',
+            type: 'int'
+        },
+        {
+            name: 'SalePrice',
+            type: 'int'
+        },
+        {
+            name: 'AcquisitionDate',
+            type: 'date',
+            dateWriteFormat: 'Y-m-d'
+        },
+        {
+            name: 'SaleDate',
+            type: 'date',
+            dateWriteFormat: 'Y-m-d'
+        },
+        {
+            name: 'IsSold',
+            type: 'boolean'
+        },
+        // relational properties
+        {
+            name: 'Status',
+            type: 'auto'
+        },
+        {
+            name: 'Make',
+            type: 'auto'
+        },
+        {
+            name: 'Model',
+            type: 'auto'
+        },
+        {
+            name: 'Category',
+            type: 'auto'
+        },
+        {
+            name: 'SalesPeople',
+            type: 'auto'
+        },
+        {
+            name: 'Color',
+            type: 'auto'
+        },
+        {
+            name: 'Features',
+            type: 'auto'
+        },
+        // decorated properties
+        {
+            name: '_Status',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: '_Make',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: '_Model',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: '_Category',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: '_Color',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: '_Features',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: '_SalesPeople',
+            type: 'string',
+            persist: false
+        }
+    ] 
+});</pre>
+</body>
+</html>

@@ -15,25 +15,28 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('CarTracker.view.staff.edit.Window', {
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-car-edit-Window'>/**
+</span> * Window for adding/editing {@link CarTracker.model.Car} records
+ */
+Ext.define('CarTracker.view.car.edit.Window', {
     extend: 'Ext.window.Window',
-    alias: 'widget.staff.edit.window',
+    alias: 'widget.car.edit.window',
     requires: [
-        'CarTracker.view.staff.edit.Form'
+        'CarTracker.view.car.edit.Form'
     ],
-    iconCls: 'icon_user',
-    width: 600,
-    modal: true,
-    resizable: true,
-    draggable: true,
-    constrainHeader: true,
-    layout: 'fit',
-    initComponent: function() {
-        var me = this;
+<span id='CarTracker-view-car-edit-Window-cfg-iconCls'>    iconCls: 'icon_tag',
+</span><span id='CarTracker-view-car-edit-Window-cfg-width'>    width: 600,
+</span><span id='CarTracker-view-car-edit-Window-cfg-modal'>    modal: true,
+</span><span id='CarTracker-view-car-edit-Window-cfg-resizable'>    resizable: true,
+</span><span id='CarTracker-view-car-edit-Window-property-draggable'>    draggable: true,
+</span><span id='CarTracker-view-car-edit-Window-cfg-constrainHeader'>    constrainHeader: true,
+</span><span id='CarTracker-view-car-edit-Window-cfg-layout'>    layout: 'fit',
+</span><span id='CarTracker-view-car-edit-Window-method-initComponent'>    initComponent: function() {
+</span>        var me = this;
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'staff.edit.form'
+                    xtype: 'car.edit.form'
                 }
             ],
             dockedItems: [

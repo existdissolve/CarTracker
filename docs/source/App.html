@@ -79,6 +79,42 @@ Ext.define('CarTracker.controller.App', {
             config;
         // switch on token to determine which content to create
         switch( token ) {
+            case 'option/make':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Car Makes',
+                    iconCls: 'icon_make',
+                    store: Ext.create( 'CarTracker.store.option.Makes', {
+                        pageSize: 30
+                    })
+                };
+                break;
+            case 'option/model':
+                config = {
+                    xtype: 'option.list',
+                    title: 'Manage Car Models',
+                    iconCls: 'icon_model',
+                    store: Ext.create( 'CarTracker.store.option.Models', {
+                        pageSize: 30
+                    }),
+                    extraColumns: {
+                        text: 'Make',
+                        dataIndex: 'Make',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return record.get( '_Make' )
+                        },
+                        editor: {
+                            xtype: 'ux.form.field.remotecombobox',
+                            displayField: 'LongName',
+                            valueField: 'MakeID',
+                            store: {
+                                type: 'option.make'
+                            },
+                            allowBlank: false
+                        }
+                    }
+                };
+                break;
             case 'option/category':
                 config = {
                     xtype: 'option.list',
@@ -136,9 +172,7 @@ Ext.define('CarTracker.controller.App', {
                 break;
             case 'inventory':
                 config = {
-                    xtype: 'panel',
-                    title: 'Inventory',
-                    html: 'Some inventory content'
+                    xtype: 'car.list'
                 };
                 break;
             default: 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-car-search-Window'>/**
+</span> * Window for searching {@link CarTracker.model.Car} records
+ */
+Ext.define('CarTracker.view.car.search.Window', {
+    extend: 'Ext.window.Window',
+    alias: 'widget.car.search.window',
+    requires: [
+        'CarTracker.view.car.search.Form'
+    ],
+<span id='CarTracker-view-car-search-Window-cfg-iconCls'>    iconCls: 'icon_search',
+</span><span id='CarTracker-view-car-search-Window-cfg-width'>    width: 600,
+</span><span id='CarTracker-view-car-search-Window-cfg-modal'>    modal: true,
+</span><span id='CarTracker-view-car-search-Window-cfg-resizable'>    resizable: true,
+</span><span id='CarTracker-view-car-search-Window-property-draggable'>    draggable: true,
+</span><span id='CarTracker-view-car-search-Window-cfg-constrainHeader'>    constrainHeader: true,
+</span><span id='CarTracker-view-car-search-Window-cfg-bodyPadding'>    bodyPadding: 10, 
+</span><span id='CarTracker-view-car-search-Window-cfg-layout'>    layout: 'fit',
+</span><span id='CarTracker-view-car-search-Window-method-initComponent'>    initComponent: function() {
+</span>        var me = this;
+        Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'car.search.form'
+                }
+            ],
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'button',
+                            itemId: 'cancel',
+                            text: 'Cancel',
+                            iconCls: 'icon_delete'
+                        },
+                        '-&gt;',
+                        {
+                            xtype: 'button',
+                            itemId: 'search',
+                            text: 'Search',
+                            iconCls: 'icon_search'
+                        }
+                    ]
+                }
+            ]
+        });
+        me.callParent( arguments );
+    }
+});</pre>
+</body>
+</html>

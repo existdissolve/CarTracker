@@ -44,7 +44,7 @@ Ext.define('Ext.rtl.dom.Element_position', {
 <span id='Ext-dom-Element-property-_positionTopRight'>    _positionTopRight: ['position', 'top', 'right'],
 </span>
     statics: {
-<span id='Ext-dom-Element-method-getXY'>        getXY: function(el) {
+<span id='Ext-rtl-dom-Element_position-method-getXY'>        getXY: function(el) {
 </span>            var doc = document,
                 bd = doc.body,
                 docEl = doc.documentElement,
@@ -104,7 +104,7 @@ Ext.define('Ext.rtl.dom.Element_position', {
         }
     },
 
-<span id='Ext-dom-Element-method-getPositioning'>    getPositioning: function(autoPx){
+<span id='Ext-rtl-dom-Element_position-method-getPositioning'>    getPositioning: function(autoPx){
 </span>        var xStyle = Ext.rootHierarchyState.rtl ? 'right' : 'left',
             styles = this.getStyle([xStyle, 'top', 'position', 'z-index']),
             dom = this.dom;

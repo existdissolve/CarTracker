@@ -15,88 +15,60 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js"><span id='CarTracker-view-staff-List'>/**
-</span> * Grid for displaying Staff details
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-option-List'>/**
+</span> * Generic Editable Grid for managing options
  */
-Ext.define('CarTracker.view.staff.List', {
+Ext.define('CarTracker.view.option.List', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.staff.list',
+    alias: 'widget.option.list',
     requires: [
-        'Ext.grid.column.Boolean',
-        'Ext.grid.column.Date'
+        'Ext.grid.plugin.RowEditing',
+        'Ext.toolbar.Paging',
+        'Ext.grid.column.Boolean'
     ],
-<span id='CarTracker-view-staff-List-cfg-title'>    title: 'Manage Staff Members',
-</span><span id='CarTracker-view-staff-List-cfg-iconCls'>    iconCls: 'icon_user',
-</span><span id='CarTracker-view-staff-List-cfg-store'>    store: 'Staff',
-</span><span id='CarTracker-view-staff-List-method-initComponent'>    initComponent: function() {
-</span>        var me = this;
-        Ext.applyIf(me, {
+<span id='CarTracker-view-option-List-property-extraColumns'>    extraColumns: null,
+</span><span id='CarTracker-view-option-List-method-initComponent'>    initComponent: function() {
+</span>        var me = this,
+            columns = [
+                {
+                    text: 'Abbreviation',
+                    dataIndex: 'ShortName',
+                    editor: {
+                        xtype: 'textfield'
+                    },
+                    flex: .2
+                },
+                {
+                    text: 'Name',
+                    dataIndex: 'LongName',
+                    editor: {
+                        xtype: 'textfield',
+                        allowBlank: false
+                    },
+                    flex: .5
+                },
+                {
+                    xtype: 'booleancolumn',
+                    text: 'Active',
+                    dataIndex: 'Active',
+                    trueText: 'Yes',
+                    falseText: 'No'
+                }
+            ];
+        if( !Ext.isEmpty( me.extraColumns ) ) {
+            columns.unshift( me.extraColumns );
+        }
+        Ext.applyIf(me,{
+            selType: 'rowmodel',
+            plugins: [
+                {
+                    ptype: 'rowediting',
+                    clicksToEdit: 2
+                }
+            ],
             columns: {
                 defaults: {},
-                items: [
-                    {
-                        text: 'Position',
-                        dataIndex: '_Position',
-                        width: 200
-                    },
-                    {
-                        text: 'Name',
-                        dataIndex: 'LastName',
-                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
-                            return value + ', ' + record.get( 'FirstName' )
-                        },
-                        width: 200
-                    },
-                    {
-                        xtype: 'datecolumn',
-                        text: 'Hire Date',
-                        dataIndex: 'HireDate',
-                        dateFormat: 'Y-m-d'
-                    },
-                    {
-                        text: 'Phone',
-                        dataIndex: 'Phone'
-                    },
-                    {
-                        xtype: 'booleancolumn',
-                        text: 'Active',
-                        dataIndex: 'Active',
-                        trueText: 'Yes',
-                        falseText: 'No'
-                    },
-                    {
-                        xtype: 'datecolumn',
-                        text: 'DOB',
-                        dataIndex: 'DOB',
-                        dateFormat: 'Y-m-d',
-                        hidden: true
-                    },
-                    {
-                        text: 'Address1',
-                        dataIndex: 'Address1',
-                        hidden: true
-                    },
-                    {
-                        text: 'Address2',
-                        dataIndex: 'Address2',
-                        hidden: true
-                    },
-                    {
-                        text: 'City',
-                        dataIndex: 'City',
-                        hidden: true
-                    },
-                    {
-                        text: 'State',
-                        dataIndex: 'State',
-                        hidden: true
-                    },
-                    {
-                        text: 'Postal Code',
-                        dataIndex: 'PostalCode',
-                        hidden: true
-                    }
-                ]
+                items: columns
             },
             dockedItems: [
                 {
@@ -108,7 +80,7 @@ Ext.define('CarTracker.view.staff.List', {
                             xtype: 'button',
                             itemId: 'add',
                             iconCls: 'icon_add',
-                            text: 'Add Staff Member'
+                            text: 'Add Item'
                         }
                     ]
                 },
@@ -123,7 +95,7 @@ Ext.define('CarTracker.view.staff.List', {
             ]
         });
         me.callParent( arguments );
-    }
+    } 
 });</pre>
 </body>
 </html>

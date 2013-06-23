@@ -15,53 +15,104 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js"><span id='CarTracker-view-option-List'>/**
-</span> * Generic Editable Grid for managing options
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-car-List'>/**
+</span> * Grid for displaying Staff details
  */
-Ext.define('CarTracker.view.option.List', {
+Ext.define('CarTracker.view.car.List', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.option.list',
+    alias: 'widget.car.list',
     requires: [
-        'Ext.grid.plugin.RowEditing',
-        'Ext.toolbar.Paging',
-        'Ext.grid.column.Boolean'
+        'Ext.grid.column.Boolean',
+        'Ext.grid.column.Date',
+        'Ext.grid.column.Number'
     ],
-<span id='CarTracker-view-option-List-method-initComponent'>    initComponent: function() {
+<span id='CarTracker-view-car-List-cfg-title'>    title: 'Manage Inventory',
+</span><span id='CarTracker-view-car-List-cfg-iconCls'>    iconCls: 'icon_tag',
+</span><span id='CarTracker-view-car-List-cfg-store'>    store: 'Cars',
+</span><span id='CarTracker-view-car-List-cfg-viewConfig'>    viewConfig: {
+</span>        deferEmptyText: false,
+        emptyText: 'Sorry, no cars matched your search criteria!'
+    },
+<span id='CarTracker-view-car-List-method-initComponent'>    initComponent: function() {
 </span>        var me = this;
-        Ext.applyIf(me,{
-            selType: 'rowmodel',
-            plugins: [
-                {
-                    ptype: 'rowediting',
-                    clicksToEdit: 2
-                }
-            ],
+        Ext.applyIf(me, {
             columns: {
                 defaults: {},
                 items: [
                     {
-                        text: 'Abbreviation',
-                        dataIndex: 'ShortName',
-                        editor: {
-                            xtype: 'textfield'
+                        text: 'Make',
+                        dataIndex: 'Make',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return record.get( '_Make' )
                         },
-                        flex: .2
+                        width: 100
                     },
                     {
-                        text: 'Name',
-                        dataIndex: 'LongName',
-                        editor: {
-                            xtype: 'textfield',
-                            allowBlank: false
+                        text: 'Model',
+                        dataIndex: 'Model',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return record.get( '_Model' )
                         },
-                        flex: .5
+                        width: 100
+                    },
+                    {
+                        text: 'Category',
+                        dataIndex: 'Category',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return record.get( '_Category' )
+                        },
+                        width: 100
+                    },
+                    {
+                        text: 'Year',
+                        dataIndex: 'Year'
+                    },
+                    {
+                        text: 'Color',
+                        dataIndex: 'Color',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return record.get( '_Color' )
+                        },
+                        width: 200
+                    },
+                    {
+                        xtype: 'datecolumn',
+                        text: 'Acquired',
+                        dataIndex: 'AcquisitionDate',
+                        dateFormat: 'Y-m-d',
+                        hidden: true
+                    },
+                    {
+                        xtype: 'numbercolumn',
+                        text: 'List Price',
+                        dataIndex: 'ListPrice'
+                    },
+                    {
+                        xtype: 'numbercolumn',
+                        text: 'Sale Price',
+                        dataIndex: 'SalePrice'
                     },
                     {
                         xtype: 'booleancolumn',
-                        text: 'Active',
-                        dataIndex: 'Active',
+                        text: 'Sold?',
+                        dataIndex: 'IsSold',
                         trueText: 'Yes',
                         falseText: 'No'
+                    },
+                    {
+                        xtype: 'datecolumn',
+                        text: 'Sale Date',
+                        dataIndex: 'SaleDate',
+                        dateFormat: 'Y-m-d',
+                        hidden: true
+                    },
+                    {
+                        text: 'Status',
+                        dataIndex: 'Status',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return record.get( '_Status' )
+                        },
+                        width: 200
                     }
                 ]
             },
@@ -75,7 +126,21 @@ Ext.define('CarTracker.view.option.List', {
                             xtype: 'button',
                             itemId: 'add',
                             iconCls: 'icon_add',
-                            text: 'Add Item'
+                            text: 'Add to Inventory'
+                        },
+                        '-',
+                        {
+                            xtype: 'button',
+                            itemId: 'search',
+                            iconCls: 'icon_search',
+                            text: 'Search Inventory'
+                        },
+                        '-',
+                        {
+                            xtype: 'button',
+                            itemId: 'clear',
+                            iconCls: 'icon_delete',
+                            text: 'Clear Search'
                         }
                     ]
                 },
@@ -90,7 +155,7 @@ Ext.define('CarTracker.view.option.List', {
             ]
         });
         me.callParent( arguments );
-    } 
+    }
 });</pre>
 </body>
 </html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-ux-form-field-plugin-ClearTrigger'>/**
+</span> * @class CarTracker.ux.form.field.plugin.ClearTrigger
+ * @extends Ext.AbstractPlugin
+ * Plugin that adds the ability to clean an input field with a trigger class
+ * @ptype cleartrigger
+ */
+ Ext.define('CarTracker.ux.form.field.plugin.ClearTrigger', {
+ 	extend: 'Ext.AbstractPlugin',
+ 	alias: 'plugin.cleartrigger',
+<span id='CarTracker-ux-form-field-plugin-ClearTrigger-method-constructor'> 	constructor: function() {
+</span> 		var me = this;
+ 			me.callParent( arguments );
+ 		var field = me.getCmp();
+ 	},
+<span id='CarTracker-ux-form-field-plugin-ClearTrigger-method-init'> 	init: function( field ) {
+</span> 		var me = this;
+ 		// combobox
+ 		if( field.isXType( 'combobox' ) || field.isXType( 'datefield' ) || field.isXType( 'timefield' ) ) {
+ 			field.trigger2Cls = 'x-form-clear-trigger';
+ 			field.onTrigger2Click = function() {
+ 				field.clearValue();
+ 			}
+ 		}
+ 		else {
+ 			field.triggerCls = 'x-form-clear-trigger';
+ 			field.onTriggerClick = function() {
+ 				field.reset();
+ 			}
+ 		}
+ 		me.callParent( arguments );
+ 	}
+ });</pre>
+</body>
+</html>

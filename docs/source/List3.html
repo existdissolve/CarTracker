@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='CarTracker-view-staff-List'>/**
+</span> * Grid for displaying Staff details
+ */
+Ext.define('CarTracker.view.staff.List', {
+    extend: 'Ext.grid.Panel',
+    alias: 'widget.staff.list',
+    requires: [
+        'Ext.grid.column.Boolean',
+        'Ext.grid.column.Date'
+    ],
+<span id='CarTracker-view-staff-List-cfg-title'>    title: 'Manage Staff Members',
+</span><span id='CarTracker-view-staff-List-cfg-iconCls'>    iconCls: 'icon_user',
+</span><span id='CarTracker-view-staff-List-cfg-store'>    store: 'Staff',
+</span><span id='CarTracker-view-staff-List-method-initComponent'>    initComponent: function() {
+</span>        var me = this;
+        Ext.applyIf(me, {
+            columns: {
+                defaults: {},
+                items: [
+                    {
+                        text: 'Position',
+                        dataIndex: '_Position',
+                        width: 200
+                    },
+                    {
+                        text: 'Name',
+                        dataIndex: 'LastName',
+                        renderer: function( value, metaData, record, rowIndex, colIndex, store, view ) {
+                            return value + ', ' + record.get( 'FirstName' )
+                        },
+                        width: 200
+                    },
+                    {
+                        xtype: 'datecolumn',
+                        text: 'Hire Date',
+                        dataIndex: 'HireDate',
+                        dateFormat: 'Y-m-d'
+                    },
+                    {
+                        text: 'Phone',
+                        dataIndex: 'Phone'
+                    },
+                    {
+                        xtype: 'booleancolumn',
+                        text: 'Active',
+                        dataIndex: 'Active',
+                        trueText: 'Yes',
+                        falseText: 'No'
+                    },
+                    {
+                        xtype: 'datecolumn',
+                        text: 'DOB',
+                        dataIndex: 'DOB',
+                        dateFormat: 'Y-m-d',
+                        hidden: true
+                    },
+                    {
+                        text: 'Address1',
+                        dataIndex: 'Address1',
+                        hidden: true
+                    },
+                    {
+                        text: 'Address2',
+                        dataIndex: 'Address2',
+                        hidden: true
+                    },
+                    {
+                        text: 'City',
+                        dataIndex: 'City',
+                        hidden: true
+                    },
+                    {
+                        text: 'State',
+                        dataIndex: 'State',
+                        hidden: true
+                    },
+                    {
+                        text: 'Postal Code',
+                        dataIndex: 'PostalCode',
+                        hidden: true
+                    }
+                ]
+            },
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'button',
+                            itemId: 'add',
+                            iconCls: 'icon_add',
+                            text: 'Add Staff Member'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'pagingtoolbar',
+                    ui: 'footer',
+                    defaultButtonUI: 'default',
+                    dock: 'bottom',
+                    displayInfo: true,
+                    store: me.getStore()
+                }
+            ]
+        });
+        me.callParent( arguments );
+    }
+});</pre>
+</body>
+</html>
