@@ -22,3 +22,7 @@ Create First Model, Store, Proxy, and Editable Grid
 Part Five
 ---------
 Creation of Main Staff Section
+
+Part Six
+---------
+Creation of Main Inventory Section
