@@ -14,7 +14,8 @@ Ext.define('CarTracker.view.car.List', {
     store: 'Cars',
     viewConfig: {
         deferEmptyText: false,
-        emptyText: 'Sorry, no cars matched your search criteria!'
+        emptyText: 'Sorry, no cars matched your search criteria!',
+        markDirty: false
     },
     initComponent: function() {
         var me = this;
