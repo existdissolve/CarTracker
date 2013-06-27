@@ -26,3 +26,7 @@ Creation of Main Staff Section
 Part Six
 ---------
 Creation of Main Inventory Section
+
+Part Seven
+----------
+Main Inventory Form Cleanup, Expansion

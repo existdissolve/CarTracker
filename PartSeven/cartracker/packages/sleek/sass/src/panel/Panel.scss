@@ -1,0 +1,110 @@
+@if $include-panel-airy-ui {
+    @include extjs-panel-ui(
+        $ui-label: 'airy',
+        // use "sleek" style rules
+        $ui-header-font-family: $panel-sleek-header-font-family,
+        $ui-header-font-size: $panel-sleek-header-font-size,
+        $ui-header-font-weight: $panel-sleek-header-font-weight,
+        $ui-header-text-transform: $panel-sleek-header-text-transform,
+        $ui-header-padding: $panel-sleek-header-padding,
+        // use "airy" style rules
+        $ui-tool-background-image: $panel-airy-tool-background-image,
+        $ui-header-color: $panel-airy-header-color,
+        $ui-header-background-color: $panel-airy-header-background-color,
+        $ui-body-background-color: $panel-airy-background-color
+    );
+}
+
+@if $include-panel-airy-framed-ui {
+    @include extjs-panel-ui(
+        $ui-label: 'airy-framed',
+        // inherit "default" style rules
+        $ui-border-radius: $panel-frame-border-radius,
+        // use "sleek" style rules
+        $ui-border-color: $panel-sleek-frame-border-color,
+        $ui-header-font-family: $panel-sleek-header-font-family,
+        $ui-header-font-size: $panel-sleek-header-font-size,
+        $ui-header-font-weight: $panel-sleek-header-font-weight,
+        $ui-header-text-transform: $panel-sleek-header-text-transform,
+        $ui-header-border-color: $panel-sleek-frame-border-color,
+        $ui-border-width: $panel-sleek-frame-border-width,
+        $ui-padding: $panel-sleek-frame-padding,
+        $ui-header-border-width: $panel-sleek-frame-header-border-width,
+        $ui-header-padding: $panel-sleek-frame-header-padding,
+        $ui-body-border-width: $panel-sleek-frame-body-border-width,
+        // use "airy" style rules
+        $ui-header-color: $panel-airy-header-color,
+        $ui-header-background-color: $panel-airy-header-background-color,
+        $ui-body-border-color: $panel-airy-body-border-color,
+        $ui-tool-background-image: $panel-airy-tool-background-image,
+        $ui-body-background-color: $panel-airy-frame-background-color
+    );
+}
+
+.#{$prefix}panel-airy-framed, .#{$prefix}panel-airy {
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    .#{$prefix}panel-header {
+        @include background-gradient($panel-airy-header-background-color, matte, top);
+        border-bottom: solid 1px $panel-sleek-frame-header-border-color !important;
+    }
+    .#{$prefix}panel-body {
+        line-height: $panel-sleek-body-line-height;
+    }
+}
+
+@if $include-panel-callout-ui {
+    @include extjs-panel-ui(
+        $ui-label: 'callout',
+        //  use "sleek" style rules
+        $ui-header-font-family: $panel-sleek-header-font-family,
+        $ui-header-font-size: $panel-sleek-header-font-size,
+        $ui-header-font-weight: $panel-sleek-header-font-weight,
+        $ui-header-text-transform: $panel-sleek-header-text-transform,
+        $ui-header-padding: $panel-sleek-header-padding,
+        // use "callout" style rules
+        $ui-tool-background-image: $panel-callout-tool-background-image,
+        $ui-header-color: $panel-callout-header-color,
+        $ui-header-background-color: $panel-callout-header-background-color,
+        $ui-body-background-color: $panel-callout-background-color
+    );
+}
+
+@if $include-panel-callout-framed-ui {
+    @include extjs-panel-ui(
+        $ui-label: 'callout-framed',
+        // inherit "default" style rules
+        $ui-border-radius: $panel-frame-border-radius,
+        // use "sleek" style rules
+        $ui-border-color: $panel-sleek-frame-border-color,
+        $ui-header-font-family: $panel-sleek-header-font-family,
+        $ui-header-font-size: $panel-sleek-header-font-size,
+        $ui-header-font-weight: $panel-sleek-header-font-weight,
+        $ui-header-text-transform: $panel-sleek-header-text-transform,
+        $ui-header-border-color: $panel-sleek-frame-border-color,
+        $ui-border-width: $panel-sleek-frame-border-width,
+        $ui-padding: $panel-sleek-frame-padding,
+        $ui-header-border-width: $panel-sleek-frame-header-border-width,
+        $ui-header-padding: $panel-sleek-frame-header-padding,
+        $ui-body-border-width: $panel-sleek-frame-body-border-width,
+        // use "callout" style rules
+        $ui-header-color: $panel-callout-header-color,
+        $ui-header-background-color: $panel-callout-header-background-color,
+        $ui-body-border-color: $panel-callout-body-border-color,
+        $ui-tool-background-image: $panel-callout-tool-background-image,
+        $ui-body-background-color: $panel-callout-frame-background-color
+    );
+}
+.#{$prefix}panel-callout-framed, .#{$prefix}panel-callout {
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.07);
+    .#{$prefix}panel-header {
+        @include background-gradient($panel-callout-header-background-color, matte, top);
+        border-bottom: solid 1px $panel-sleek-frame-header-border-color;
+    }
+    .#{$prefix}panel-body {
+        line-height: $panel-sleek-body-line-height;
+    }
+}

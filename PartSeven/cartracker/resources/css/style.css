@@ -1,0 +1,51 @@
+.header h1 {ont-weight: bold;font-size: 1.5em;display: inline-block;margin:0 0 0 5px;line-height:.3em;}
+.header img {height:40px;vertical-align:middle;display: inline-block;}
+.x-mask {z-index:20000}
+
+.x-form-multiselect-body .x-boundlist .x-mask {background: none;}
+.x-form-itemselector-body .x-form-item {margin: 0;}
+.x-form-itemselector-top {background-image: url(../images/icon/top2.gif);}
+.x-form-itemselector-up {background-image: url(../images/icon/up2.gif);}
+.x-form-itemselector-add {background-image: url(../images/icon/right2.gif);}
+.x-form-itemselector-remove {background-image: url(../images/icon/left2.gif);}
+.x-form-itemselector-down {background-image: url(../images/icon/down2.gif);}
+.x-form-itemselector-bottom {background-image: url(../images/icon/bottom2.gif);}
+
+#images-view .x-panel-body{background: white;font: 11px Arial, Helvetica, sans-serif;}
+#images-view .thumb{background: #dddddd;padding: 3px;padding-bottom: 0;}
+
+.x-quirks #images-view .thumb {padding-bottom: 3px;}
+
+.thumb img{height: 60px;width: 80px;}
+.thumb-wrap{float: left;margin: 4px;margin-right: 0;padding: 5px;}
+.thumb-wrap span {display: block;overflow: hidden;text-align: center;width: 86px; /* for ie to ensure that the text is centered */}
+.x-item-over{border:1px solid #dddddd;background: #efefef repeat-x left top;padding: 4px;}
+.x-item-selected{background: #eff5fb no-repeat right bottom;border:1px solid #99bbe8;padding: 4px;}
+.x-item-selected .thumb{background:transparent;}
+.x-view-selector {position:absolute;left:0;top:0;width:0;border:1px dotted;opacity: .5;-moz-opacity: .5;filter:alpha(opacity=50);zoom:1;background-color:#c3daf9;border-color:#3399bb;}
+.ext-strict .ext-ie .x-tree .x-panel-bwrap{position:relative;overflow:hidden;}
+
+.cardetails td {padding: 5px;}
+.cardetails td.label {font-weight: bold;}
+.cardetails tr {vertical-align: top;}
+.cardetails .thumbnail {width:90px;height:70px;overflow:hidden;border:solid 5px #eaeaea;background: #fafafa;margin:3px;}
+
+.icon_user {background: url( '../images/icon/user.png' ) !important;}
+.icon_gear {background: url( '../images/icon/engine.png' ) !important;}
+.icon_tag {background: url( '../images/icon/tag.png' ) !important;}
+.icon_add {background: url( '../images/icon/plus.png' ) !important;}
+.icon_edit {background: url( '../images/icon/pencil.png' ) !important;}
+.icon_save {background: url( '../images/icon/save.png' ) !important;}
+.icon_delete {background: url( '../images/icon/error.png' ) !important;}
+.icon_category {background: url( '../images/icon/list.png' ) !important;}
+.icon_color {background: url( '../images/icon/color.png' ) !important;}
+.icon_make {background: url( '../images/icon/make.png' ) !important;}
+.icon_model {background: url( '../images/icon/model.png' ) !important;}
+.icon_feature {background: url( '../images/icon/feature.png' ) !important;}
+.icon_position {background: url( '../images/icon/contact.png' ) !important;}
+.icon_status {background: url( '../images/icon/status.png' ) !important;}
+.icon_search {background: url( '../images/icon/search.png' ) !important;}
+.icon_picture {background: url( '../images/icon/picture_inv.png' ) !important;}
+.icon_detail {background: url( '../images/icon/detail.png' ) !important;}
+.icon_drivetrain {background: url( '../images/icon/drivetrain.png' ) !important;}
+
