@@ -30,3 +30,7 @@ Creation of Main Inventory Section
 Part Seven
 ----------
 Main Inventory Form Cleanup, Expansion
+
+Part Eight
+----------
+User Login and Roles

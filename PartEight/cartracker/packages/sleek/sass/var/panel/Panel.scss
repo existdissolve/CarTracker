@@ -1,0 +1,61 @@
+// "sleek" panel vars...these will be base vars for our other custom panel uis
+$panel-sleek-header-font-family: "Open Sans", Arial, sans-serif !default;
+$panel-sleek-header-weight: 600 !default;
+$panel-sleek-header-font-size: 13px !default;
+$panel-sleek-header-font-weight: bold !default;
+$panel-sleek-header-text-transform: uppercase !default;
+$panel-sleek-header-line-height: 38px !default;
+$panel-sleek-body-line-height: 20px !important;
+$panel-sleek-frame-border-color: #d8d9d9 !default;
+$panel-sleek-frame-background-color: #fffdf2 !default;
+$panel-sleek-header-padding: 15px 20px !default;
+$panel-sleek-border-width: 1px !default;
+$panel-sleek-header-border-width: 1px !default;
+$panel-sleek-body-border-width: 1px !default;
+$panel-sleek-frame-border-width: 0px !default;
+$panel-sleek-frame-padding: 0 !default;
+$panel-sleek-frame-header-border-width: $panel-sleek-frame-border-width !default;
+$panel-sleek-frame-header-border-color: #eaeaea !default;
+$panel-sleek-frame-header-padding: 15px 20px !default;
+$panel-sleek-body-border-width: 1px !default;
+$panel-sleek-frame-body-border-width: 1px !default;
+
+// panel-airy vars
+$panel-airy-header-color: #349aff !default;
+$panel-airy-header-background-color: white !default;
+$panel-airy-body-border-color: #d8d9d9 !default;
+$panel-airy-tool-background-image: 'tools/tool-sprites-dark' !default;
+$panel-airy-frame-background-color: white;
+$panel-airy-background-color: white;
+
+// panel-callout vars
+$panel-callout-header-color: #fafafa !default;
+$panel-callout-header-background-color: #5d6167 !default;
+$panel-callout-body-border-color: #d8d9d9 !default;
+$panel-callout-tool-background-image: 'tools/tool-sprites' !default;
+$panel-callout-frame-background-color: #fffdf2;
+$panel-callout-background-color: #fffdf2;
+
+/**
+ * @var {boolean}
+ * True to include the "airy" panel UI
+ */
+$include-panel-airy-ui: true !default;
+
+/**
+ * @var {boolean}
+ * True to include the "airy-framed" panel UI
+ */
+$include-panel-airy-framed-ui: true !default;
+
+/**
+ * @var {boolean}
+ * True to include the "callout" panel UI
+ */
+$include-panel-callout-ui: true !default;
+
+/**
+ * @var {boolean}
+ * True to include the "callout-framed" panel UI
+ */
+$include-panel-callout-framed-ui: true !default;

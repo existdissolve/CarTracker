@@ -1,0 +1,11 @@
+{
+  "name": "sleek",
+  "format": "1",
+  "version": "1.0.0",
+  "creator": "Joel Watson",
+  "summary": "Super-sleek, super-sexy",
+  "detailedDescription": "A high-quality, sleek theme that\u0027s perfect for your enterprise management console.",
+  "type": "theme",
+  "extend": "ext-theme-neptune",
+  "local": true
+}
