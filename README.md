@@ -34,3 +34,7 @@ Main Inventory Form Cleanup, Expansion
 Part Eight
 ----------
 User Login and Roles
+
+Part Nine
+---------
+Reports and Charts
