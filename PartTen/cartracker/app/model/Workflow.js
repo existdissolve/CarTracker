@@ -45,7 +45,12 @@ Ext.define('CarTracker.model.Workflow', {
             persist: false
         },
         {
-            name: '_Staff',
+            name: 'LastName',
+            type: 'string',
+            persist: false
+        },
+        {
+            name: 'FirstName',
             type: 'string',
             persist: false
         }

@@ -269,33 +269,32 @@ component extends="CarTracker.handlers.Base" {
         };
     }
 
-    function initiate( required Any event, required Struct rc, required Struct prc ){
-        // get iniated status
-        var status = StatusService.get( 4 );
-        // get staff member
-        var staff = StaffService.get( arguments.rc.StaffID );
-        // get new workflow
-        var workflow = ORMService.new( "Workflow" );
-        // get target car
-        var car = CarService.get( arguments.rc.CarID );
-        // update car status
-        car.setStatus( status );
-        // populate workflow
-        workflow.setStatus( status );
-        workflow.setCar( car );
-        workflow.setStaff( staff );
-        workflow.setNotes( arguments.rc.Notes );
-
-        // save the Car
-        CarService.save( car );
-        // save workflow
-        ORMService.save( workflow );
-
+    function listWorkflow( required Any event, required Struct rc, required Struct prc ){
+        var car = CarService.get( rc.CarID );
+        var workflows = ORMService.findAllWhere( entityName="Workflow", criteria={ Car=car } );
+        var decorations = [
+            {
+                property: "LastStatus",
+                includeList: "LongName",
+                keyMapping: {
+                    "LongName" = "_LastStatus"
+                }
+            },
+            {
+                property: "NextStatus",
+                includeList: "LongName",
+                keyMapping: {
+                    "LongName" = "_NextStatus"
+                }
+            },
+            {
+                property: "Staff",
+                includeList: "LastName,FirstName"
+            }
+        ];
         prc.jsonData = {
-            "data"  = EntityUtils.parseEntity( entity=car, simpleValues=true ),
-            "success" = true,
-            "message" = "The Car Status was updated successfully!",
-            "type" = "success"
+            "count" = arrayLen( workflows ),
+            "data"  = EntityUtils.parseEntity( entity=workflows, simpleValues=true, decorations=decorations )
         };
     }
 }

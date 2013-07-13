@@ -6,71 +6,120 @@ Ext.define('CarTracker.controller.Workflows', {
     stores: [
         'Workflows'
     ],
-    /*views: [
-        'car.List',
-        'car.edit.Form',
-        'car.edit.Window',
-        'car.search.Form',
-        'car.search.Window',
-        'car.Detail'
+    views: [
+        'workflow.List'
     ],
     refs: [
         {
-            ref: 'CarList',
-            selector: '[xtype=car.list]'
-        },
-        {
-            ref: 'CarEditWindow',
-            selector: '[xtype=car.edit.window]'
-        },
-        {
-            ref: 'CarEditForm',
-            selector: '[xtype=car.edit.form]'
-        },
-        {
-            ref: 'CarSearchWindow',
-            selector: '[xtype=car.search.window]'
-        },
-        {
-            ref: 'CarSearchForm',
-            selector: '[xtype=car.search.form]'
-        },
-        {
-            ref: 'CarImageView',
-            selector: '[xtype=car.edit.tab.image]'
-        },
-        {
-            ref: 'CarDetailWindow',
-            selector: '[xtype=car.detail]'
+            ref: 'WorkflowList',
+            selector: '[xtype=workflow.list]'
         }
-    ],*/
+    ],
     init: function() {
         this.listen({
             controller: {
                 '#Workflows': {
                     approve: this.approveWorkflow,
                     reject: this.rejectWorkflow,
-                    restart: this.restartWorkflow
+                    restart: this.restartWorkflow,
+                    view: this.showHistory
                 }
             },
-            component: {},
+            component: {
+                'grid[xtype=workflow.list]': {
+                    beforerender: this.loadWorkflowHistory
+                }
+            },
             global: {},
             store: {},
             proxy: {} 
         });
     },
+    /**
+     * Loads workflow history store
+     * @param {Ext.grid.Panel}
+     * @param {Object} eOpts The options object passed to {@link Ext.util.Observable.addListener}
+     */
+    loadWorkflowHistory: function( grid, eOpts ) {
+        var me = this,
+            store = grid.getStore();
+
+        store.getProxy().url = '/api/workflows/' + grid.CarID;
+        store.load();
+    },
+    /**
+     * Displays all workflow history for the selected Car
+     * @param {Ext.view.View} view
+     * @param {Ext.data.Record} record The record that belongs to the item
+     * @param {HTMLElemen} item The item's element
+     * @param {Number} index The item's index
+     * @param {Ext.EventObject} e The raw event object
+     * @param {Object} eOpts The options object passed to {@link Ext.util.Observable.addListener}
+     */
+    showHistory: function( view, record, item, index, e, eOpts ) {
+        var me = this,
+            win;
+        // create ad-hoc window
+        Ext.create('Ext.window.Window', {
+            title: 'Workflow History',
+            iconCls: 'icon_workflow',
+            width: 600,
+            maxHeight: 600,
+            autoScroll: true,
+            modal: true,
+            y: 100,
+            items: [
+                {
+                    xtype: 'workflow.list',
+                    CarID: record.get( 'CarID' )
+                }
+            ]
+        }).show();
+    },
+    /**
+     * Submits an "Approve" workflow action
+     * @param {Ext.view.View} view
+     * @param {Ext.data.Record} record The record that belongs to the item
+     * @param {HTMLElemen} item The item's element
+     * @param {Number} index The item's index
+     * @param {Ext.EventObject} e The raw event object
+     * @param {Object} eOpts The options object passed to {@link Ext.util.Observable.addListener}
+     */
     approveWorkflow: function( view, record, item, index, e, eOpts ) {
         var me = this;
         me.handleWorkflowAction( 'Approve', record );
     },
+    /**
+     * Submits a "Reject" workflow action
+     * @param {Ext.view.View} view
+     * @param {Ext.data.Record} record The record that belongs to the item
+     * @param {HTMLElemen} item The item's element
+     * @param {Number} index The item's index
+     * @param {Ext.EventObject} e The raw event object
+     * @param {Object} eOpts The options object passed to {@link Ext.util.Observable.addListener}
+     */
     rejectWorkflow: function( view, record, item, index, e, eOpts ) {
         var me = this;
         me.handleWorkflowAction( 'Reject', record );
     },
+    /**
+     * Submits a "Restart" workflow action
+     * @param {Ext.view.View} view
+     * @param {Ext.data.Record} record The record that belongs to the item
+     * @param {HTMLElemen} item The item's element
+     * @param {Number} index The item's index
+     * @param {Ext.EventObject} e The raw event object
+     * @param {Object} eOpts The options object passed to {@link Ext.util.Observable.addListener}
+     */
     restartWorkflow: function( view, record, item, index, e, eOpts ) {
         var me = this;
         me.handleWorkflowAction( 'Restart', record );
     },
+    /**
+     * Common interface for submitting workflow action to the server
+     * @param {String} action
+     * @param {Ext.data.Record} record
+     */
     handleWorkflowAction: function( action, record ) {
         var me = this,
             msg;
@@ -83,36 +132,49 @@ Ext.define('CarTracker.controller.Workflows', {
                 msg = 'To <strong>' + action + '</strong> the workflow for this record, please enter a justification below.';
                 break;
         }
-        Ext.Msg.prompt( 'Workflow Management', msg, function( buttonId, text, opt ){
-            if( buttonId=='ok' ) {
-                // make sure a message was entered
-                if( Ext.isEmpty( text ) ) {
-                    Ext.Msg.alert( 'Attention', 'Please enter a justification for your action', function(){
-                        me.handleWorkflowAction( action, record );
-                    });                    
-                    return false;
-                }
-                // send Ajax request with workflow action
-                Ext.Ajax.request({
-                    url: '/api/workflows/' + record.get( 'CarID' ) + '.json',
-                    method: 'PUT',
-                    params: {
-                        Status: record.get( 'Status' ),
-                        Action: action,
-                        Staff: CarTracker.LoggedInUser.get( 'StaffID' ),
-                        Notes: text
-                    },
-                    success: function( response, opts ) {
-                        // get new status for car
-                        var result = Ext.decode( response.responseText );
-                        // set record value to update record in grid
-                        record.set( 'Status', result.data.Status );
-                        record.set( '_Status', result.data._Status );
+        Ext.Msg.minWidth=300;
+        Ext.Msg.show({
+            title: 'Workflow Management', 
+            msg: msg, 
+            fn: function( buttonId, text, opt ){
+                if( buttonId=='ok' ) {
+                    // make sure a message was entered
+                    if( Ext.isEmpty( text ) ) {
+                        Ext.Msg.alert( 'Attention', 'Please enter a justification for your action', function(){
+                            me.handleWorkflowAction( action, record );
+                        });                    
+                        return false;
                     }
-                });
-            }
-        }, this, true );
+                    // send Ajax request with workflow action
+                    Ext.Ajax.request({
+                        url: '/api/workflows/' + record.get( 'CarID' ) + '.json',
+                        method: 'PUT',
+                        params: {
+                            Status: record.get( 'Status' ),
+                            Action: action,
+                            Staff: CarTracker.LoggedInUser.get( 'StaffID' ),
+                            Notes: text
+                        },
+                        success: function( response, opts ) {
+                            // get new status for car
+                            var result = Ext.decode( response.responseText );
+                            // set record value to update record in grid
+                            record.set( 'Status', result.data.Status );
+                            record.set( '_Status', result.data._Status );
+                        }
+                    });
+                }
+            }, 
+            scope: this, 
+            width: 350,
+            multiline: true,
+            buttons: Ext.MessageBox.OKCANCEL
+        });
     },
+    /**
+     * Handy method for checking whether the authenticated user has workflow permissions at a particular status
+     * @param {Number} status
+     */
     hasWorkflowPermission: function( status ) {
         var me = this,
             hasPermission = false,

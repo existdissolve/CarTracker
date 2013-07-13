@@ -261,6 +261,14 @@ Ext.define('CarTracker.controller.Cars', {
                 }
             });
         }
+        // add view workflow option; no restrictions
+        items.push({
+            text: 'View Workflow History',
+            iconCls: 'icon_workflow',
+            handler: function( item, e ) {
+                me.application.getWorkflowsController().fireEvent( 'view', view, record, item, index, e, eOpts );
+            }
+        });
         // add view option; no restrictions
         items.push({
             text: 'View Details',
