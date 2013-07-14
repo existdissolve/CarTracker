@@ -8,7 +8,10 @@ Ext.define('CarTracker.controller.Dashboard', {
         'report.Months'
     ],
     views: [
-        'executive.Dashboard'
+        'executive.Dashboard',
+        'report.make.Chart',
+        'report.month.Chart',
+        'car.List'
     ],
     init: function() {
         this.listen({

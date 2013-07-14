@@ -1,9 +1,6 @@
 Ext.define('CarTracker.view.executive.Dashboard', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.executive.dashboard',
-    requires: [
-        'Ext.layout.container.Column'
-    ],
     layout: 'border',
     initComponent: function() {
         var me = this;
@@ -26,7 +23,6 @@ Ext.define('CarTracker.view.executive.Dashboard', {
                             items: [
                                 {
                                     xtype: 'report.month.chart',
-                                    legend: false,
                                     store: {
                                         type: 'report.month'
                                     }
@@ -62,7 +58,6 @@ Ext.define('CarTracker.view.executive.Dashboard', {
                         {
                             xtype: 'car.list',
                             dockedItems: false,
-                            autoScroll: true,
                             anchor: '100% 50%',
                             title: 'Audits Awaiting Approval',
                             iconCls: 'icon_workflow',
@@ -105,7 +100,6 @@ Ext.define('CarTracker.view.executive.Dashboard', {
                                 {
                                     xtype: 'report.make.chart',
                                     title: 'Sales by Make',
-                                    legend: false,
                                     store: {
                                         type: 'report.make'
                                     }
