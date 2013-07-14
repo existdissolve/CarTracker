@@ -1,0 +1,7 @@
+.header h1 {ont-weight: bold;font-size: 1.5em;display: inline-block;margin:0 0 0 5px;line-height:.3em;}
+.header img {height:40px;vertical-align:middle;display: inline-block;}
+
+
+.icon_user {background: url( '../images/icon/user.png' ) !important;}
+.icon_gear {background: url( '../images/icon/engine.png' ) !important;}
+.icon_tag {background: url( '../images/icon/tag.png' ) !important;}
